@@ -1,0 +1,3 @@
+@extends('layout')
+@section('title','لوحة التحكم | Impact Tech')
+@section('body')<div class="admin-shell"><aside class="sidebar"><span class="eyebrow">CONTENT STUDIO</span><h2>لوحة التحكم</h2>@foreach(['/admin'=>'نظرة عامة','/admin/services'=>'الخدمات','/admin/projects'=>'المشاريع','/admin/settings'=>'المحتوى والهوية','/admin/inquiries'=>'طلبات التواصل'] as $url=>$label)<a class="{{ request()->getPathInfo()===$url ? 'selected' : '' }}" href="{{ $url }}">{{ $label }}</a>@endforeach<a href="/" target="_blank">معاينة الموقع ↗</a><form method="post" action="/logout">@csrf<button class="text-link">تسجيل الخروج</button></form></aside><main class="admin-main">@yield('content')</main></div>@endsection
