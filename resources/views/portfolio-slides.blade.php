@@ -1,10 +1,139 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>
-@page{margin:0;size:A4 landscape}body{font-family:dejavusans;color:#0a2236;margin:0;font-size:10.5pt;line-height:1.55}.slide{height:210mm;padding:15mm 17mm;box-sizing:border-box;page-break-after:always;position:relative;overflow:hidden;background:#f7fbfc}.slide:last-child{page-break-after:auto}.dark{background:#071f31;color:#fff}.logo{width:76mm;max-height:31mm}.cover{text-align:center;padding-top:28mm}.cover .logo{width:105mm;max-height:42mm}.cover h1{font-size:33pt;line-height:1.2;margin:19mm 0 5mm}.cover p{font-size:14pt;color:#c3dfdf}.cover .services-line{margin-top:16mm;color:#5ce0da;font-size:10pt;letter-spacing:1px}.orb{position:absolute;border:1px solid #1f5260;border-radius:50%}.o1{width:115mm;height:115mm;top:-54mm;right:-28mm}.o2{width:90mm;height:90mm;bottom:-50mm;left:-20mm}.kicker{font-size:8pt;letter-spacing:1.4px;color:#079c98;text-transform:uppercase}.dark .kicker{color:#5ce0da}.title{font-size:25pt;line-height:1.2;margin:3mm 0 7mm}.lead{font-size:13pt;color:#38596d}.columns{display:table;width:100%;table-layout:fixed;border-spacing:7mm 0}.columns>div{display:table-cell;vertical-align:top}.card{background:#fff;border:1px solid #d8e7e9;border-top:3px solid #09bdb7;padding:5mm;border-radius:3mm}.card h3{margin:0 0 2mm;font-size:14pt}.card p{margin:0;color:#4c6879}.statement{font-size:17pt;line-height:1.65;margin-top:10mm}.service{display:inline-block;vertical-align:top;width:43%;margin:0 0 4mm 4%;padding:3mm 0;border-bottom:1px solid #d7e5e7}.service b{display:block;font-size:12pt}.service small{color:#079c98}.ms-strip{margin-top:6mm;background:#0b3446;color:#fff;padding:5mm}.ms-item{display:inline-block;width:30%;vertical-align:top;margin-left:2%}.ms-item b{display:block;color:#5ce0da;font-size:12pt}.ms-item span{color:#c5dbde;font-size:9pt}.member{display:inline-block;vertical-align:top;width:27%;min-height:37mm;margin:0 0 5mm 3%;padding:4mm;background:#fff;border-top:3px solid #09bdb7}.member h3{margin:0;font-size:12.5pt}.member b{color:#088c88;font-size:9pt}.member p{color:#526c7b;font-size:8.5pt}.process{margin-top:5mm}.step{display:inline-block;width:21%;margin-left:2%;padding:3mm;border-top:1px solid #9acdcc}.step b{color:#079c98}.project{display:inline-block;vertical-align:top;width:27%;min-height:31mm;margin:0 0 4mm 3%;padding:3mm;background:#fff;border:1px solid #d9e7e9}.project small{color:#079c98}.project h3{font-size:11.5pt;margin:1mm 0}.project p{font-size:8.3pt;color:#526c7b;margin:0}.contact-bar{position:absolute;right:17mm;left:17mm;bottom:15mm;background:#092f40;color:#fff;padding:5mm}.contact-cell{display:inline-block;width:23%;vertical-align:middle}.contact-cell b{color:#5ce0da}.footer{position:absolute;bottom:7mm;right:17mm;left:17mm;border-top:1px solid #d5e4e6;padding-top:2mm;color:#718794;font-size:7.5pt}.dark .footer{border-color:#31515e;color:#aac1c5}.page-no{float:left}.ltr{direction:ltr;text-align:left}
-.slide{height:auto!important;min-height:0!important;overflow:visible!important}
-</style></head><body>
-<section class="slide dark cover"><div class="orb o1"></div><div class="orb o2"></div>@if(!empty($settings['logo']) && file_exists(storage_path('app/public/'.$settings['logo'])))<img class="logo" src="{{ storage_path('app/public/'.$settings['logo']) }}">@elseif(file_exists(public_path('images/impact-logo.png')))<img class="logo" src="{{ public_path('images/impact-logo.png') }}">@endif<h1>حلول رقمية تصنع أثرًا.</h1><p>نبني التجارب الرقمية التي تساعد الأعمال على التطور والنمو.</p><div class="services-line" dir="ltr">WEB DEVELOPMENT · MOBILE APPLICATIONS · MICROSOFT POWER PLATFORM · DATA & BI</div><div class="footer">IMPACT TECH · COMPANY PROFILE <span class="page-no">01 / 05</span></div></section>
-<section class="slide"><div class="kicker">01 / ABOUT IMPACT TECH</div><div class="columns"><div style="width:38%"><h1 class="title">نفهم عملك.<br>ثم نبني له.</h1><p class="statement">{{ $settings['about'] }}</p></div><div style="width:62%"><article class="card" style="margin-bottom:7mm"><div class="kicker">OUR VISION</div><h3>رؤيتنا</h3><p>{{ $settings['vision'] ?? '' }}</p></article><article class="card"><div class="kicker">OUR MISSION</div><h3>رسالتنا</h3><p>{{ $settings['mission'] ?? '' }}</p></article></div></div><div class="footer">IMPACT TECH · ABOUT <span class="page-no">02 / 05</span></div></section>
-<section class="slide"><div class="kicker">02 / WHAT WE DO</div><h1 class="title">خبرة تقنية تخدم نمو أعمالك.</h1><div>@foreach($services->take(8) as $service)<article class="service"><small>{{ $service->label }}</small><b>{{ $service->title }}</b><span>{{ $service->description }}</span></article>@endforeach</div><div class="ms-strip"><div class="ms-item"><b>Microsoft Dynamics 365</b><span>CRM · Operations · Customer journeys</span></div><div class="ms-item"><b>Microsoft Power Apps</b><span>Business apps · Workflows · Microsoft 365</span></div><div class="ms-item"><b>Microsoft Power BI</b><span>Dashboards · Data models · Insights</span></div></div><div class="footer">IMPACT TECH · SERVICES <span class="page-no">03 / 05</span></div></section>
-<section class="slide"><div class="kicker">03 / OUR TEAM</div><h1 class="title">فريق يجمع التقنية وفهم الأعمال.</h1>@forelse($team->take(5) as $member)<article class="member"><h3>{{ $member->name }}</h3><b>{{ $member->role }}</b><p>{{ $member->bio }}</p></article>@empty<div class="card"><h3>Impact Tech Team</h3><p>فريق متعدد المهارات في هندسة البرمجيات وتطبيقات الموبايل وحلول Microsoft وتحليل البيانات والدعم التقني.</p></div>@endforelse<div class="process"><div class="step"><b>01 · نفهم</b><br>الأهداف والأولويات</div><div class="step"><b>02 · نصمم</b><br>التجربة والحل</div><div class="step"><b>03 · نطوّر</b><br>البناء والاختبار</div><div class="step"><b>04 · نطلق</b><br>التسليم والدعم</div></div><div class="footer">IMPACT TECH · TEAM & PROCESS <span class="page-no">04 / 05</span></div></section>
-<section class="slide"><div class="kicker">04 / SELECTED WORK</div><h1 class="title">حلول بنيناها لتحديات حقيقية.</h1>@foreach($projects->take(6) as $project)<article class="project"><small>{{ $project->category }}</small><h3>{{ $project->title }}</h3><p>{{ $project->summary }}</p></article>@endforeach<div class="contact-bar"><div class="contact-cell"><b>LET'S BUILD WHAT'S NEXT</b><br>ابدأ مشروعك معنا</div><div class="contact-cell ltr">{{ $settings['email'] ?? 'info@impacttech.digital' }}</div><div class="contact-cell ltr">{{ $settings['phone'] ?? '+962 7 7915 2624' }}</div><div class="contact-cell ltr">impacttech.site</div></div><div class="footer">IMPACT TECH · SELECTED WORK & CONTACT <span class="page-no">05 / 05</span></div></section>
-</body></html>
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<style>
+@page { margin: 14mm 16mm; size: A4-L; }
+body { font-family: dejavusans; color: #0a2236; font-size: 10pt; line-height: 1.45; }
+h1,h2,h3,p { margin-top: 0; }
+.cover { text-align: center; padding-top: 22mm; }
+.cover-logo { width: 100mm; max-height: 38mm; }
+.cover h1 { color: #082436; font-size: 34pt; line-height: 1.15; margin: 20mm 0 5mm; }
+.cover-lead { color: #3d6474; font-size: 15pt; }
+.accent-line { width: 30mm; height: 3px; background: #09bdb7; margin: 12mm auto 8mm; }
+.capabilities { color: #078f8b; font-size: 10pt; letter-spacing: 1px; }
+.kicker { color: #078f8b; font-size: 8pt; letter-spacing: 1.3px; margin-bottom: 3mm; }
+.title { color: #082436; font-size: 25pt; line-height: 1.2; margin-bottom: 8mm; }
+.lead { color: #3e5f71; font-size: 14pt; line-height: 1.65; }
+.two { width: 100%; border-collapse: separate; border-spacing: 7mm 0; table-layout: fixed; }
+.two td { width: 50%; vertical-align: top; }
+.card { border: 1px solid #d8e7e9; border-top: 3px solid #09bdb7; background: #f7fbfc; padding: 6mm; }
+.card h3 { font-size: 14pt; margin-bottom: 2mm; }
+.card p { color: #4e6878; }
+.service-table { width: 100%; border-collapse: separate; border-spacing: 5mm 3mm; table-layout: fixed; }
+.service-table td { width: 50%; vertical-align: top; border-bottom: 1px solid #d7e5e7; padding: 2mm 1mm 3mm; }
+.service-table b { display: block; font-size: 11.5pt; color: #102f40; }
+.service-table small { color: #078f8b; }
+.microsoft { background: #0b3446; color: #fff; padding: 5mm; margin-top: 4mm; }
+.microsoft table { width: 100%; table-layout: fixed; }
+.microsoft td { width: 33%; vertical-align: top; padding-left: 5mm; }
+.microsoft b { color: #5ce0da; display: block; font-size: 11.5pt; }
+.microsoft span { color: #c5dbde; font-size: 8.5pt; }
+.team-table { width: 100%; border-collapse: separate; border-spacing: 5mm 4mm; table-layout: fixed; }
+.team-table td { width: 33%; vertical-align: top; background: #f7fbfc; border-top: 3px solid #09bdb7; padding: 4mm; }
+.team-table h3 { font-size: 12pt; margin-bottom: 1mm; }
+.team-table b { color: #078f8b; font-size: 8.5pt; }
+.team-table p { color: #526c7b; font-size: 8pt; margin: 2mm 0 0; }
+.process { width: 100%; margin-top: 5mm; table-layout: fixed; }
+.process td { width: 25%; border-top: 1px solid #8fcac7; padding: 3mm; }
+.process b { color: #078f8b; }
+.project-table { width: 100%; border-collapse: separate; border-spacing: 4mm 3mm; table-layout: fixed; }
+.project-table td { width: 33%; vertical-align: top; background: #f7fbfc; border: 1px solid #dae7e9; padding: 3.5mm; }
+.project-table small { color: #078f8b; }
+.project-table h3 { font-size: 11pt; margin: 1mm 0; }
+.project-table p { color: #526c7b; font-size: 8pt; margin: 0; }
+.contact { background: #082f40; color: #fff; margin-top: 6mm; padding: 5mm; }
+.contact table { width: 100%; table-layout: fixed; }
+.contact td { width: 25%; vertical-align: middle; }
+.contact b { color: #5ce0da; }
+.footer { border-top: 1px solid #d7e5e7; color: #718794; font-size: 7.5pt; margin-top: 7mm; padding-top: 2mm; }
+.page-number { float: left; }
+.ltr { direction: ltr; text-align: left; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+@if(!empty($settings['logo']) && file_exists(storage_path('app/public/'.$settings['logo'])))
+<img class="cover-logo" src="{{ storage_path('app/public/'.$settings['logo']) }}">
+@elseif(file_exists(public_path('images/impact-logo.png')))
+<img class="cover-logo" src="{{ public_path('images/impact-logo.png') }}">
+@endif
+<h1>حلول رقمية تصنع أثرًا.</h1>
+<p class="cover-lead">نبني التجارب الرقمية التي تساعد الأعمال على التطور والنمو.</p>
+<div class="accent-line"></div>
+<p class="capabilities" dir="ltr">WEB DEVELOPMENT · MOBILE APPLICATIONS · MICROSOFT POWER PLATFORM · DATA &amp; BI</p>
+<div class="footer">IMPACT TECH · COMPANY PROFILE <span class="page-number">01 / 05</span></div>
+</div>
+
+<pagebreak />
+
+<div>
+<div class="kicker">01 / ABOUT IMPACT TECH</div>
+<table class="two"><tr>
+<td><h1 class="title">نفهم عملك.<br>ثم نبني له.</h1><p class="lead">{{ $settings['about'] }}</p></td>
+<td>
+<div class="card" style="margin-bottom:7mm"><div class="kicker">OUR VISION</div><h3>رؤيتنا</h3><p>{{ $settings['vision'] ?? '' }}</p></div>
+<div class="card"><div class="kicker">OUR MISSION</div><h3>رسالتنا</h3><p>{{ $settings['mission'] ?? '' }}</p></div>
+</td>
+</tr></table>
+<div class="footer">IMPACT TECH · ABOUT <span class="page-number">02 / 05</span></div>
+</div>
+
+<pagebreak />
+
+<div>
+<div class="kicker">02 / WHAT WE DO</div>
+<h1 class="title">خبرة تقنية تخدم نمو أعمالك.</h1>
+<table class="service-table">
+@foreach($services->take(8)->chunk(2) as $row)
+<tr>@foreach($row as $service)<td><small>{{ $service->label }}</small><b>{{ $service->title }}</b><span>{{ $service->description }}</span></td>@endforeach @if($row->count()===1)<td></td>@endif</tr>
+@endforeach
+</table>
+<div class="microsoft"><table><tr>
+<td><b>Microsoft Dynamics 365</b><span>CRM · Operations · Customer journeys</span></td>
+<td><b>Microsoft Power Apps</b><span>Business apps · Workflows · Microsoft 365</span></td>
+<td><b>Microsoft Power BI</b><span>Dashboards · Data models · Insights</span></td>
+</tr></table></div>
+<div class="footer">IMPACT TECH · SERVICES <span class="page-number">03 / 05</span></div>
+</div>
+
+<pagebreak />
+
+<div>
+<div class="kicker">03 / OUR TEAM</div>
+<h1 class="title">فريق يجمع التقنية وفهم الأعمال.</h1>
+@if($team->isNotEmpty())
+<table class="team-table">
+@foreach($team->take(5)->chunk(3) as $row)
+<tr>@foreach($row as $member)<td><h3>{{ $member->name }}</h3><b>{{ $member->role }}</b><p>{{ $member->bio }}</p></td>@endforeach @for($i=$row->count();$i<3;$i++)<td></td>@endfor</tr>
+@endforeach
+</table>
+@else
+<div class="card"><h3>Impact Tech Team</h3><p>فريق متعدد المهارات في هندسة البرمجيات وتطبيقات الموبايل وحلول Microsoft وتحليل البيانات والدعم التقني.</p></div>
+@endif
+<table class="process"><tr><td><b>01 · نفهم</b><br>الأهداف والأولويات</td><td><b>02 · نصمم</b><br>التجربة والحل</td><td><b>03 · نطوّر</b><br>البناء والاختبار</td><td><b>04 · نطلق</b><br>التسليم والدعم</td></tr></table>
+<div class="footer">IMPACT TECH · TEAM &amp; PROCESS <span class="page-number">04 / 05</span></div>
+</div>
+
+<pagebreak />
+
+<div>
+<div class="kicker">04 / SELECTED WORK</div>
+<h1 class="title">حلول بنيناها لتحديات حقيقية.</h1>
+<table class="project-table">
+@foreach($projects->take(6)->chunk(3) as $row)
+<tr>@foreach($row as $project)<td><small>{{ $project->category }}</small><h3>{{ $project->title }}</h3><p>{{ $project->summary }}</p></td>@endforeach @for($i=$row->count();$i<3;$i++)<td></td>@endfor</tr>
+@endforeach
+</table>
+<div class="contact"><table><tr>
+<td><b>LET'S BUILD WHAT'S NEXT</b><br>ابدأ مشروعك معنا</td>
+<td class="ltr">{{ $settings['email'] ?? 'info@impacttech.digital' }}</td>
+<td class="ltr">{{ $settings['phone'] ?? '+962 7 7915 2624' }}</td>
+<td class="ltr">impacttech.site</td>
+</tr></table></div>
+<div class="footer">IMPACT TECH · SELECTED WORK &amp; CONTACT <span class="page-number">05 / 05</span></div>
+</div>
+
+</body>
+</html>
