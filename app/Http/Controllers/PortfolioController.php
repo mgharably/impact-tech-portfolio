@@ -13,7 +13,13 @@ class PortfolioController {
   $mpdf->SetDirectionality('rtl');
   $mpdf->SetTitle('Impact Tech Portfolio');
   $mpdf->SetAuthor('Impact Tech');
-  $mpdf->WriteHTML(view('portfolio-slides',$data)->render());
+  $css=file_get_contents(public_path('css/portfolio-pdf.css'));
+  $mpdf->WriteHTML($css,\Mpdf\HTMLParserMode::HEADER_CSS);
+  foreach(range(1,5) as $slide){
+   $html=view('portfolio-slide',$data+['slide'=>$slide])->render();
+   $mpdf->WriteFixedPosHTML($html,0,0,297,210,'hidden');
+   if($slide<5)$mpdf->AddPage('L');
+  }
   return response($mpdf->Output('',\Mpdf\Output\Destination::STRING_RETURN),200,['Content-Type'=>'application/pdf','Content-Disposition'=>'attachment; filename="Impact-Tech-Portfolio-'.date('Y-m-d').'.pdf"']);
  }
 }
