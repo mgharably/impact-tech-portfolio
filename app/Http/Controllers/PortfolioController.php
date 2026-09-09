@@ -9,11 +9,11 @@ class PortfolioController {
  public function pdf(){
   $data=['settings'=>Setting::pluck('value','key'),'services'=>Service::where('published',true)->orderBy('sort_order')->get(),'projects'=>Project::where('published',true)->orderBy('sort_order')->get(),'team'=>TeamMember::where('published',true)->orderBy('sort_order')->get()];
   if(!is_dir(storage_path('app/mpdf')))mkdir(storage_path('app/mpdf'),0775,true);
-  $mpdf=new \Mpdf\Mpdf(['mode'=>'utf-8','format'=>'A4','margin_left'=>0,'margin_right'=>0,'margin_top'=>0,'margin_bottom'=>0,'default_font'=>'dejavusans','tempDir'=>storage_path('app/mpdf')]);
+  $mpdf=new \Mpdf\Mpdf(['mode'=>'utf-8','format'=>'A4-L','margin_left'=>0,'margin_right'=>0,'margin_top'=>0,'margin_bottom'=>0,'default_font'=>'dejavusans','tempDir'=>storage_path('app/mpdf')]);
   $mpdf->SetDirectionality('rtl');
   $mpdf->SetTitle('Impact Tech Portfolio');
   $mpdf->SetAuthor('Impact Tech');
-  $mpdf->WriteHTML(view('portfolio-pdf',$data)->render());
+  $mpdf->WriteHTML(view('portfolio-slides',$data)->render());
   return response($mpdf->Output('',\Mpdf\Output\Destination::STRING_RETURN),200,['Content-Type'=>'application/pdf','Content-Disposition'=>'attachment; filename="Impact-Tech-Portfolio-'.date('Y-m-d').'.pdf"']);
  }
 }
