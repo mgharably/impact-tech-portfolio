@@ -10,6 +10,7 @@ Route::post('/login',[AuthController::class,'login'])->middleware('throttle:10,1
 Route::post('/logout',[AuthController::class,'logout'])->middleware('auth');
 Route::prefix('admin')->middleware(['auth','admin'])->group(function(){
 Route::get('/',[AdminController::class,'dashboard']);
+Route::post('/portfolio/generate',[AdminController::class,'generatePortfolio']);
 Route::get('/settings',[AdminController::class,'settings']);Route::post('/settings',[AdminController::class,'saveSettings']);
 Route::get('/inquiries',[AdminController::class,'inquiries']);Route::patch('/inquiries/{inquiry}',[AdminController::class,'status']);
 Route::get('/{type}',[AdminController::class,'index'])->whereIn('type',['services','projects','team']);
